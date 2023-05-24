@@ -22,9 +22,8 @@ router.get("/:id", (req, res)=>{
 });
 
 router.post("/", (req, res) => {
-    const id = req.body.id;
     const todo = req.body.title;
-    req.conn.query("INSERT INTO todo (id, title) VALUES ($1, $2)", [id, todo], (error, result) => {
+    req.conn.query("INSERT INTO todo (title) VALUES ($1)", [todo], (error, result) => {
       if (error) {
         res.status(500).send("Error Occurred");
       }
